@@ -21,14 +21,14 @@ const Products = () => {
   const productData = [
     {
       id:        1,
-      src:       'Public/Pictures/blue2.png',
+      src:       '/Pictures/blue2.png',
       link:      '/abaya',
       label:     'Abaya',
       animation: 'slideInLeft',
     },
     {
       id:        2,
-      src:       'public/Pictures/blue.png',
+      src:       '/Pictures/blue.png',
       link:      '/hijabs',
       label:     'Hijabs',
       animation: 'slideInRight',
