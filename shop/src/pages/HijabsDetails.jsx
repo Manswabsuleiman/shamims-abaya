@@ -37,10 +37,13 @@ const HIJAB_NAMES = [
 ];
 
 const HIJAB_IMAGES = [
-  '/public/Pictures/hijab1.png', '/public/Pictures/hijab2.png', '/public/Pictures/hijab3.png', '/public/Pictures/hijab15.png',
-  '/public/Pictures/hijab5.png', '/public/Pictures/hijab6.png', '/public/Pictures/hijab7.png', '/public/Pictures/hijab8.png',
-  '/public/Pictures/hijab9.png', '/public/Pictures/hijab10.png', '/public/Pictures/hijab11.png', '/public/Pictures/hijab12.png',
-  '/public/Pictures/hijab13.png', '/public/Pictures/hijab14.png', '/public/Pictures/hijab16.png', '/public/Pictures/hijab17.png',
+  '/Pictures/hijab1.png', '/Pictures/hijab2.png', '/Pictures/hijab3.png', '/Pictures/hijab15.png',
+  
+  '/Pictures/hijab5.png', '/Pictures/hijab6.png', '/Pictures/hijab7.png', '/Pictures/hijab8.png',
+  
+  '/Pictures/hijab9.png', '/Pictures/hijab10.png', '/Pictures/hijab11.png', '/Pictures/hijab12.png',
+  
+  '/Pictures/hijab13.png', '/Pictures/hijab14.png', '/Pictures/hijab16.png', '/Pictures/hijab17.png',
 ];
 
 const HijabsDetails = () => {
