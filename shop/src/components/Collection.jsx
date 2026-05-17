@@ -10,7 +10,7 @@ const Collection = () => {
     { src: "/Pictures/Abbaya2.png", alt: "Abbaya 2", path: "/abaya", label: "Abaya" },
     { src: "/Pictures/hijabi.png", alt: "Hijab Collection", path: "/hijabs", label: "Hijab" },
     { src: "/Pictures/Abbaya1.png", alt: "Abbaya 1", path: "/abaya", label: "Abaya" },
-    { src: /Pictures/h2.png", alt: "Hijab 2", path: "/hijabs", label: "Hijab" },
+    { src: "/Pictures/h2.png", alt: "Hijab 2", path: "/hijabs", label: "Hijab" },
   ];
 
   const containerVariants = {
