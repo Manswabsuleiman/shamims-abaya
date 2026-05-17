@@ -29,7 +29,7 @@ const LandingPage = () => {
 
       <div style={{ width: '100%' }}>
         <img
-          src="/public/Pictures/squid.png"
+          src="/Pictures/squid.png"
           alt="Landing"
           className="hero-image"
         />
