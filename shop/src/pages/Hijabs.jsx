@@ -14,14 +14,14 @@ const HIJAB_PRICES = [
 ];
 
 const HIJAB_IMAGES = [
-  'public/Pictures/hijab1.png',  'public/Pictures/hijab2.png',
-  'public/Pictures/hijab3.png',  'public/Pictures/hijab15.png',
-  'public/Pictures/hijab5.png',  'public/Pictures/hijab6.png',
-  'public/Pictures/hijab7.png',  'public/Pictures/hijab8.png',
-  'public/Pictures/hijab9.png',  'public/Pictures/hijab10.png',
-  'public/Pictures/hijab11.png', 'public/Pictures/hijab12.png',
-  'public/Pictures/hijab13.png', 'public/Pictures/hijab14.png',
-  'public/Pictures/hijab16.png', 'public/Pictures/hijab17.png',
+  '/Pictures/hijab1.png',  'public/Pictures/hijab2.png',
+  '/Pictures/hijab3.png',  'public/Pictures/hijab15.png',
+  '/Pictures/hijab5.png',  'public/Pictures/hijab6.png',
+  '/Pictures/hijab7.png',  'public/Pictures/hijab8.png',
+  '/Pictures/hijab9.png',  'public/Pictures/hijab10.png',
+  '/Pictures/hijab11.png', 'public/Pictures/hijab12.png',
+  '/Pictures/hijab13.png', 'public/Pictures/hijab14.png',
+  '/Pictures/hijab16.png', 'public/Pictures/hijab17.png',
 ];
 
 const HIJAB_NAMES = [
@@ -115,7 +115,6 @@ const styles = `
     transition: opacity 0.4s ease;
   }
 
-  /* ── FLASH SALE HEADER ───────────────────────────────────────────── */
   .flash-header {
     display: flex;
     align-items: center;
@@ -157,7 +156,6 @@ const styles = `
     text-align: center;
   }
 
-  /* ── PRODUCT GRID ────────────────────────────────────────────────── */
   .product-section {
     padding: 0 5% 50px;
     background: #faf9f7;
@@ -343,9 +341,9 @@ const Hijabs = () => {
   }));
 
   const slides = [
-    { tag: 'New Arrivals', title: 'Hijab Collection', discount: 'Up to 50% OFF!', subtext: 'Elegant styles for every occasion', image: 'public/Pictures/ban2.png' },
-    { tag: 'Trending Now', title: 'Premium Hijabs', discount: 'Fresh Styles Just In', subtext: 'Soft fabrics, stunning colours', image: 'public/Pictures/ban1.png' },
-    { tag: 'Summer Collection', title: 'Light & Breathable', discount: 'Flat 20% Discount', subtext: 'Stay modest, stay cool', image: 'public/Pictures/ban3.png' },
+    { tag: 'New Arrivals', title: 'Hijab Collection', discount: 'Up to 50% OFF!', subtext: 'Elegant styles for every occasion', image: '/Pictures/ban2.png' },
+    { tag: 'Trending Now', title: 'Premium Hijabs', discount: 'Fresh Styles Just In', subtext: 'Soft fabrics, stunning colours', image: '/Pictures/ban1.png' },
+    { tag: 'Summer Collection', title: 'Light & Breathable', discount: 'Flat 20% Discount', subtext: 'Stay modest, stay cool', image: '/Pictures/ban3.png' },
   ];
 
   const [current, setCurrent]   = useState(0);
