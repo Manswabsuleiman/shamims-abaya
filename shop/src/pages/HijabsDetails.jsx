@@ -14,7 +14,7 @@ const HIJAB_DESCRIPTIONS = [
   "A classic camel-toned hijab in crepe fabric — neutral, sophisticated, and the perfect complement to earth-toned outfits.",
   "A hijab in sky blue with delicate lace trim along the edge — a charming detail that adds elegance without overwhelming the look.",
   "A warm mustard hijab in lightweight viscose — vibrant, versatile, and a beautiful pop of colour for neutral or monochrome outfits.",
-  "A stone grey hijab in a relaxed woven fabric — understated, modern, and pairs seamlessly with both casual and professional styles.",
+  "A stone grey hijab in a relaxed woven fabric — understatement, modern, and pairs seamlessly with both casual and professional styles.",
   "A deep forest green hijab in satin-chiffon blend — rich in colour with a refined sheen that works beautifully for formal occasions.",
   "A hijab in warm terracotta with a subtle texture — earthy, on-trend, and perfect for autumn styling or everyday modest fashion.",
   "A soft coral hijab in premium jersey fabric — stretchy, secure, and comfortable for long days while keeping your style vibrant.",
@@ -36,14 +36,12 @@ const HIJAB_NAMES = [
   'Pleated', 'Satin', 'Pashmina', 'Pashmina', 'Colored', 'Shimmer', 'Chiffon', 'Jersey',
 ];
 
+// Cleaned up trailing/double commas here
 const HIJAB_IMAGES = [
   '/Pictures/hijab1.png', '/Pictures/hijab2.png', '/Pictures/hijab3.png', '/Pictures/hijab15.png',
-  
   '/Pictures/hijab5.png', '/Pictures/hijab6.png', '/Pictures/hijab7.png', '/Pictures/hijab8.png',
-  
   '/Pictures/hijab9.png', '/Pictures/hijab10.png', '/Pictures/hijab11.png', '/Pictures/hijab12.png',
-  
-  '/Pictures/hijab13.png', '/Pictures/hijab14.png', '/Pictures/hijab16.png', '/Pictures/hijab17.png',
+  '/Pictures/hijab13.png', '/Pictures/hijab14.png', '/Pictures/hijab16.png', '/Pictures/hijab17.png'
 ];
 
 const HijabsDetails = () => {
