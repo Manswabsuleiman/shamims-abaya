@@ -3,7 +3,7 @@ import React from 'react';
 const WhatsAppFloatingButton = () => {
   const phoneNumber = "254757080514"; 
   const message = "Hello Shamims Abaya! I am interested in your Abayas."; 
-  const logoPath = "public/Pictures/BusinessLogo.png"; 
+  const logoPath = "/Pictures/BusinessLogo.png"; 
 
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
