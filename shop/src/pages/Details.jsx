@@ -45,8 +45,8 @@ const ABAYA_PRICES = [
   { price: 2800, originalPrice: 3300 }, { price: 3000, originalPrice: 3600 },
 ];
 
-const ABAYA_IMAGES = Array.from({ length: 23 }, (_, i) => `/public/Pictures/Abbaya${i + 1}.png`);
-ABAYA_IMAGES.push(`/public/Pictures/i24.png`);
+const ABAYA_IMAGES = Array.from({ length: 23 }, (_, i) => `/Pictures/Abbaya${i + 1}.png`);
+ABAYA_IMAGES.push(`/Pictures/i24.png`);
 
 
 const Details = () => {
