@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://shamims-abaya.shop/sitemap.xml
