@@ -14,13 +14,13 @@ const HIJAB_PRICES = [
 ];
 
 const HIJAB_IMAGES = [
-  '/Pictures/hijab1.png',  '/Pictures/hijab2.png',
-  '/Pictures/hijab3.png',  '/Pictures/hijab15.png',
-  '/Pictures/hijab5.png',  '/Pictures/hijab6.png',
-  '/Pictures/hijab7.png',  '/Pictures/hijab8.png',
+  '/Pictures/pic1.png',  '/Pictures/pic4.png',
+  '/Pictures/pic5.png',  '/Pictures/hijab15.png',
+  '/Pictures/pic6.png',  '/Pictures/pic3.png',
+  '/Pictures/pic7.png',  '/Pictures/pic2.png',
   '/Pictures/hijab9.png',  '/Pictures/hijab10.png',
   '/Pictures/hijab11.png', '/Pictures/hijab12.png',
-  '/Pictures/hijab13.png', '/Pictures/hijab14.png',
+  '/Pictures/hijab13.png', '/Pictures/pic2.png',
   '/Pictures/hijab16.png', '/Pictures/hijab17.png',
 ];
 
