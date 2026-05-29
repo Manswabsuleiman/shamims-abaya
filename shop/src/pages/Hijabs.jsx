@@ -25,7 +25,7 @@ const HIJAB_IMAGES = [
 ];
 
 const HIJAB_NAMES = [
-  'Instant', 'Instant', 'Plisket', 'Crinkle',
+  'Chiffons', 'Jerseys', 'Plisket', 'Crinkle',
   'Chiffon', 'Chiffon', 'Chiffon', 'Chador',
   'Pleated', 'Satin',   'Pashmina','Pashmina',
   'Colored', 'Shimmer', 'Chiffon', 'Jersey',
