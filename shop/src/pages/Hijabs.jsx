@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import FooterWithBanner from '../components/Footer';
 
 const HIJAB_PRICES = [
-  { price: 850,  originalPrice: 1200 }, { price: 950,  originalPrice: 1300 },
-  { price: 700,  originalPrice: 1000 }, { price: 1100, originalPrice: 1400 },
-  { price: 800,  originalPrice: 1100 }, { price: 1200, originalPrice: 1500 },
-  { price: 650,  originalPrice: 900  }, { price: 900,  originalPrice: 1200 },
+  { price: 500,  originalPrice: 650 }, { price: 500,  originalPrice: 600 },
+  { price: 500,  originalPrice: 650 }, { price: 550, originalPrice: 650 },
+  { price: 550,  originalPrice: 650 }, { price: 500, originalPrice: 650 },
+  { price: 650,  originalPrice: 900  }, { price: 600,  originalPrice: 750 },
   { price: 750,  originalPrice: 1050 }, { price: 1000, originalPrice: 1300 },
   { price: 850,  originalPrice: 1150 }, { price: 950,  originalPrice: 1250 },
-  { price: 700,  originalPrice: 950  }, { price: 1100, originalPrice: 1400 },
+  { price: 700,  originalPrice: 950  }, { price: 600, originalPrice: 750 },
   { price: 800,  originalPrice: 1100 }, { price: 1300, originalPrice: 1600 },
 ];
 
