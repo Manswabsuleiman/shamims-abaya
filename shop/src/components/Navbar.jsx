@@ -204,7 +204,7 @@ const Navbar = () => {
 
         <a href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
           <img
-            src="/Pictures/BusinessLogo.png"
+            src="/Pictures/new.png"
             alt="Logo"
             style={{ height: currentLogo.height, width: currentLogo.width, objectFit: 'contain' }}
           />
