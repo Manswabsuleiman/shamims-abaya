@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FooterWithBanner from '../components/Footer';
 import WhatsAppFloatingButton from '../components/Float';
@@ -63,6 +63,21 @@ const ABAYA_NAME_OVERRIDES = {
   17: 'Girlie Tops',
   23: 'Animal Print',
 };
+
+// Dev-time safeguard: catches a silent data bug (undefined price/image)
+// immediately instead of letting mismatched array lengths fail quietly.
+if (
+  process.env.NODE_ENV !== 'production' &&
+  ABAYA_PRICES.length !== ABAYA_IMAGES.length
+) {
+  // eslint-disable-next-line no-console
+  console.error(
+    `Abaya data mismatch: ABAYA_PRICES has ${ABAYA_PRICES.length} entries, ` +
+      `ABAYA_IMAGES has ${ABAYA_IMAGES.length}. They must stay in sync.`
+  );
+}
+
+const PRODUCT_COUNT = ABAYA_IMAGES.length;
 
 const SLIDES = [
   {
@@ -458,14 +473,84 @@ const styles = `
   }
 `;
 
-const Abaya = () => {
-  const navigate = useNavigate();
+const fmt = (n) => `Ksh ${n.toLocaleString()}`;
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+/* ── PRODUCT CARD ──────────────────────────
+   Defined OUTSIDE Abaya so it keeps a stable
+   component identity across renders. Wrapped
+   in React.memo so it only re-renders when its
+   own props actually change (e.g. only the card
+   whose `liked` flag flipped re-renders, not all
+   of them, and none of them remount every second
+   just because the countdown ticked).
+*/
+const ProductCard = React.memo(function ProductCard({
+  product,
+  onToggleLike,
+  onAddToCart,
+  onViewDetails,
+}) {
+  return (
+    <div className="product-card">
+      <div className="card-image-wrap">
+        <img src={product.image} alt={product.name} loading="lazy" />
 
-  const abayas = Array.from({ length: 24 }, (_, i) => {
+        {product.soldOut ? (
+          <div className="badge-soldout">SOLD OUT</div>
+        ) : (
+          <div className="badge-sale">SALE</div>
+        )}
+
+        <button
+          type="button"
+          className="like-button"
+          onClick={() => onToggleLike(product.id)}
+          aria-label={
+            product.liked ? `Unlike ${product.name}` : `Like ${product.name}`
+          }
+        >
+          {product.liked ? '❤️' : '🤍'}
+        </button>
+      </div>
+
+      <div className="card-body">
+        <p className="card-name">{product.name}</p>
+
+        <div className="card-prices">
+          <span className="price-current">{fmt(product.price)}</span>
+          <span className="price-original">{fmt(product.originalPrice)}</span>
+        </div>
+
+        <div className="card-footer">
+          <button
+            type="button"
+            className="btn-details"
+            onClick={() => onViewDetails(product.id)}
+          >
+            Details
+          </button>
+
+          {product.soldOut ? (
+            <button type="button" className="btn-soldout" disabled>
+              Sold Out
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="btn-cart"
+              onClick={() => onAddToCart(product)}
+            >
+              Add to Cart
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+});
+
+const buildInitialAbayas = () =>
+  Array.from({ length: PRODUCT_COUNT }, (_, i) => {
     const id = i + 1;
 
     return {
@@ -479,8 +564,17 @@ const Abaya = () => {
     };
   });
 
+const Abaya = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  // Lazy initializer: buildInitialAbayas() now runs only once,
+  // on mount, instead of being rebuilt on every render.
   const [current, setCurrent] = useState(0);
-  const [products, setProducts] = useState(abayas);
+  const [products, setProducts] = useState(buildInitialAbayas);
   const [timeLeft, setTimeLeft] = useState({
     h: 8,
     m: 17,
@@ -491,9 +585,7 @@ const Abaya = () => {
 
   useEffect(() => {
     const slider = setInterval(() => {
-      setCurrent((prev) =>
-        prev === SLIDES.length - 1 ? 0 : prev + 1
-      );
+      setCurrent((prev) => (prev === SLIDES.length - 1 ? 0 : prev + 1));
     }, 5000);
 
     return () => clearInterval(slider);
@@ -539,8 +631,7 @@ const Abaya = () => {
   /* ── ADD TO CART ─────────────────────── */
 
   const addToCart = (product) => {
-    const existingCart =
-      JSON.parse(localStorage.getItem('cart')) || [];
+    const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
 
     const itemIndex = existingCart.findIndex(
       (item) => item.id === product.id
@@ -584,86 +675,13 @@ const Abaya = () => {
     );
   };
 
+  /* ── DETAILS NAV ──────────────────────── */
+
+  const viewDetails = (id) => {
+    navigate(`/details/${id}`);
+  };
+
   const pad = (n) => String(n).padStart(2, '0');
-
-  const fmt = (n) => `Ksh ${n.toLocaleString()}`;
-
-  /* ── PRODUCT CARD ────────────────────── */
-
-  const ProductCard = ({ product }) => (
-    <div className="product-card">
-      <div className="card-image-wrap">
-        <img
-          src={product.image}
-          alt={product.name}
-          loading="lazy"
-        />
-
-        {product.soldOut ? (
-          <div className="badge-soldout">SOLD OUT</div>
-        ) : (
-          <div className="badge-sale">SALE</div>
-        )}
-
-        <button
-          type="button"
-          className="like-button"
-          onClick={() => toggleLike(product.id)}
-          aria-label={
-            product.liked
-              ? `Unlike ${product.name}`
-              : `Like ${product.name}`
-          }
-        >
-          {product.liked ? '❤️' : '🤍'}
-        </button>
-      </div>
-
-      <div className="card-body">
-        <p className="card-name">{product.name}</p>
-
-        <div className="card-prices">
-          <span className="price-current">
-            {fmt(product.price)}
-          </span>
-
-          <span className="price-original">
-            {fmt(product.originalPrice)}
-          </span>
-        </div>
-
-        <div className="card-footer">
-          <button
-            type="button"
-            className="btn-details"
-            onClick={() =>
-              navigate(`/details/${product.id}`)
-            }
-          >
-            Details
-          </button>
-
-          {product.soldOut ? (
-            <button
-              type="button"
-              className="btn-soldout"
-              disabled
-            >
-              Sold Out
-            </button>
-          ) : (
-            <button
-              type="button"
-              className="btn-cart"
-              onClick={() => addToCart(product)}
-            >
-              Add to Cart
-            </button>
-          )}
-        </div>
-      </div>
-    </div>
-  );
 
   return (
     <div className="abaya-root">
@@ -673,9 +691,7 @@ const Abaya = () => {
 
       <section className="banner">
         <div className="banner-text">
-          <p className="banner-tag">
-            {SLIDES[current].tag}
-          </p>
+          <p className="banner-tag">{SLIDES[current].tag}</p>
 
           <h1 className="banner-title">
             {SLIDES[current].title}
@@ -683,9 +699,7 @@ const Abaya = () => {
             <span>{SLIDES[current].discount}</span>
           </h1>
 
-          <p className="banner-subtext">
-            {SLIDES[current].subtext}
-          </p>
+          <p className="banner-subtext">{SLIDES[current].subtext}</p>
 
           <div className="banner-dots">
             {SLIDES.map((_, i) => (
@@ -693,9 +707,7 @@ const Abaya = () => {
                 type="button"
                 key={i}
                 onClick={() => setCurrent(i)}
-                className={`banner-dot${
-                  current === i ? ' active' : ''
-                }`}
+                className={`banner-dot${current === i ? ' active' : ''}`}
                 style={{
                   width: current === i ? '24px' : '8px',
                 }}
@@ -717,13 +729,9 @@ const Abaya = () => {
       {/* ── FLASH SALE HEADER ────────────── */}
 
       <div className="flash-sale-header">
-        <div className="flash-sale-icon">
-          ⚡
-        </div>
+        <div className="flash-sale-icon">⚡</div>
 
-        <h2 className="flash-sale-title">
-          Flash Sale
-        </h2>
+        <h2 className="flash-sale-title">Flash Sale</h2>
 
         <div className="countdown">
           <span className="countdown-unit countdown-hours">
@@ -748,6 +756,9 @@ const Abaya = () => {
             <ProductCard
               key={product.id}
               product={product}
+              onToggleLike={toggleLike}
+              onAddToCart={addToCart}
+              onViewDetails={viewDetails}
             />
           ))}
         </div>
