@@ -110,10 +110,11 @@ const styles = `
     line-height: 1.4;
   }
 
-  .banner-dots { display: flex; gap: 8px; }
+  .banner-dots { display: flex; gap: 8px; margin-top: 15px; }
 
   .banner-dot {
     height: 8px;
+    width: 8px;
     border-radius: 4px;
     transition: all 0.35s ease;
     cursor: pointer;
@@ -121,7 +122,7 @@ const styles = `
     background: #ccc;
     padding: 0;
   }
-  .banner-dot.active { background: #111; }
+  .banner-dot.active { background: #111; width: 24px; }
 
   .banner-image-wrap {
     flex: 1;
@@ -142,7 +143,7 @@ const styles = `
 
   /* ── PRODUCT GRID ────────────────────────────────────────────────── */
   .product-section {
-    padding: 0 5% 50px;
+    padding: 50px 5% 50px;
   }
 
   .product-grid {
@@ -259,7 +260,7 @@ const styles = `
     flex: 1.5;
     font-size: 0.75rem;
     color: #fff;
-    background: #111;
+    background: #666;
     padding: 8px 4px;
     border-radius: 6px;
     border: none;
@@ -301,10 +302,10 @@ const Abaya = () => {
     const id = i + 1;
     return {
       id,
-      image: ABAYA_IMAGES[i],
+      image: ABAYA_IMAGES[i] || '/Pictures/placeholder.png',
       name: ABAYA_NAME_OVERRIDES[id] || `Dress ${id}`,
-      price: ABAYA_PRICES[i].price,
-      originalPrice: ABAYA_PRICES[i].originalPrice,
+      price: ABAYA_PRICES[i] ? ABAYA_PRICES[i].price : 1500,
+      originalPrice: ABAYA_PRICES[i] ? ABAYA_PRICES[i].originalPrice : 1800,
       liked: false,
       soldOut: i >= 4 && i <= 15,
     };
@@ -315,130 +316,52 @@ const Abaya = () => {
   const [timeLeft, setTimeLeft] = useState({ h: 8, m: 17, s: 56 });
 
   useEffect(() => {
-    const slider = setInterval(() => setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1)), 5000);
+    const slider = setInterval(() => {
+      setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    }, 5000);
     return () => clearInterval(slider);
   }, [slides.length]);
-
-  useEffect(() => {
-    const countdown = setInterval(() => {
-      setTimeLeft((prev) => {
-        let { h, m, s } = prev;
-        s--;
-        if (s < 0) { s = 59; m--; }
-        if (m < 0) { m = 59; h--; }
-        if (h < 0) { h = 0; m = 0; s = 0; }
-        return { h, m, s };
-      });
-    }, 1000);
-    return () => clearInterval(countdown);
-  }, []);
-
-  const addToCart = (product) => {
-    const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
-    const itemIndex = existingCart.findIndex(item => item.id === product.id);
-    let updatedCart = itemIndex !== -1
-      ? existingCart.map((item, i) => i === itemIndex ? { ...item, quantity: item.quantity + 1 } : item)
-      : [...existingCart, { ...product, quantity: 1 }];
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
-    navigate('/cart');
-  };
-
-  const toggleLike = (id) => setProducts(prev => prev.map(p => p.id === id ? { ...p, liked: !p.liked } : p));
-
-  const pad = (n) => String(n).padStart(2, '0');
-  const fmt = (n) => `Ksh ${n.toLocaleString()}`;
-
-  const ProductCard = ({ product }) => (
-    <div className="product-card">
-      <div className="card-image-wrap">
-        <img src={product.image} alt={product.name} loading="lazy" />
-
-        {product.soldOut ? (
-          <div className="badge-soldout">SOLD OUT</div>
-        ) : (
-          <div className="badge-sale">SALE</div>
-        )}
-
-        <button
-          onClick={() => toggleLike(product.id)}
-          style={{
-            position: 'absolute', top: '8px', right: '8px',
-            width: '30px', height: '30px', borderRadius: '50%',
-            backgroundColor: '#fff', border: 'none', cursor: 'pointer',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            boxShadow: '0 1px 3px rgba(0,0,0,0.1)', fontSize: '14px', zIndex: 2
-          }}
-        >
-          {product.liked ? '❤️' : '🤍'}
-        </button>
-      </div>
-
-      <div className="card-body">
-        <p className="card-name">{product.name}</p>
-        <div className="card-prices">
-          <span className="price-current">{fmt(product.price)}</span>
-          <span className="price-original">{fmt(product.originalPrice)}</span>
-        </div>
-        <div className="card-footer">
-          <button className="btn-details" onClick={() => navigate(`/details/${product.id}`)}>Details</button>
-          {product.soldOut ? (
-            <button className="btn-soldout" disabled>Sold Out</button>
-          ) : (
-            <button className="btn-cart" onClick={() => addToCart(product)}>Add to Cart</button>
-          )}
-        </div>
-      </div>
-    </div>
-  );
 
   return (
     <div className="abaya-root">
       <style>{styles}</style>
 
-      <section className="banner">
+      {/* Hero Banner Section */}
+      <div className="banner">
         <div className="banner-text">
           <p className="banner-tag">{slides[current].tag}</p>
           <h1 className="banner-title">
-            {slides[current].title}<br />
+            {slides[current].title} <br />
             <span>{slides[current].discount}</span>
           </h1>
           <p className="banner-subtext">{slides[current].subtext}</p>
           <div className="banner-dots">
-            {slides.map((_, i) => (
+            {slides.map((_, index) => (
               <button
-                key={i}
-                onClick={() => setCurrent(i)}
-                className={`banner-dot${current === i ? ' active' : ''}`}
-                style={{ width: current === i ? '24px' : '8px' }}
+                key={index}
+                className={`banner-dot ${index === current ? 'active' : ''}`}
+                onClick={() => setCurrent(index)}
               />
             ))}
           </div>
         </div>
         <div className="banner-image-wrap">
-          <img src={slides[current].image} alt="Banner" key={current} />
-        </div>
-      </section>
-
-      <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '12px', padding: '30px 5% 0', marginBottom: '25px' }}>
-        <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: '#111', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>⚡</div>
-        <h2 style={{ margin: 0, fontSize: '1.7rem', fontWeight: '700', fontFamily: 'Cormorant Garamond, serif' }}>Flash Sale</h2>
-        <div style={{ display: 'flex', gap: '5px' }}>
-          {[pad(timeLeft.h), pad(timeLeft.m), pad(timeLeft.s)].map((unit, i) => (
-            <span key={i} style={{ backgroundColor: i === 0 ? '#111' : '#ef4444', color: '#fff', borderRadius: '5px', padding: '4px 10px', fontWeight: '700', fontSize: '0.95rem', minWidth: '38px', textAlign: 'center' }}>{unit}</span>
-          ))}
+          <img src={slides[current].image} alt="Landing Showcase Slide" />
         </div>
       </div>
 
-      <section className="product-section">
+      {/* Main Grid Product List Catalog */}
+      <div className="product-section">
         <div className="product-grid">
-          {products.map((product) => <ProductCard key={product.id} product={product} />)}
-        </div>
-      </section>
-
-      <FooterWithBanner />
-      <WhatsAppFloatingButton />
-    </div>
-  );
-};
-
-export default Abaya;
+          {products.map((abaya) => (
+            <div key={abaya.id} className="product-card">
+              <div className="card-image-wrap">
+                {abaya.soldOut ? (
+                  <span className="badge-soldout">OUT OF STOCK</span>
+                ) : (
+                  <span className="badge-sale">SALE</span>
+                )}
+                <img src={abaya.image} alt={abaya.name} />
+              </div>
+              <div className="card-body">
+                <h3 className="card-name">{abaya.name}</h3>
