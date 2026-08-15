@@ -1,6 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
+// ── Synced exactly from Hijabs.jsx ──────────────────────────────────────────
+const HIJAB_IMAGES = [
+  '/Pictures/pic1.png',    '/Pictures/pic4.png',
+  '/Pictures/pic5.png',    '/Pictures/hijab15.png',
+  '/Pictures/pic6.png',    '/Pictures/pic3.png',
+  '/Pictures/pic7.png',    '/Pictures/pic2.png',
+  '/Pictures/hijab9.png',  '/Pictures/hijab10.png',
+  '/Pictures/hijab11.png', '/Pictures/hijab12.png',
+  '/Pictures/hijab13.png', '/Pictures/pic2.png',
+  '/Pictures/hijab16.png', '/Pictures/hijab17.png',
+];
+
+const HIJAB_PRICES = [
+  { price: 500,  originalPrice: 650  }, { price: 500,  originalPrice: 600  },
+  { price: 500,  originalPrice: 650  }, { price: 550,  originalPrice: 650  },
+  { price: 550,  originalPrice: 650  }, { price: 500,  originalPrice: 650  },
+  { price: 650,  originalPrice: 900  }, { price: 600,  originalPrice: 750  },
+  { price: 750,  originalPrice: 1050 }, { price: 1000, originalPrice: 1300 },
+  { price: 850,  originalPrice: 1150 }, { price: 950,  originalPrice: 1250 },
+  { price: 700,  originalPrice: 950  }, { price: 600,  originalPrice: 750  },
+  { price: 800,  originalPrice: 1100 }, { price: 1300, originalPrice: 1600 },
+];
+
+const HIJAB_NAMES = [
+  'Chiffon', 'Plisket', 'Plisket', 'Crinkle',
+  'Chiffon', 'Chiffon', 'Chiffon', 'Chador',
+  'Pleated', 'Satin',   'Pashmina','Pashmina',
+  'Colored', 'Shimmer', 'Chiffon', 'Jersey',
+];
+
 const HIJAB_DESCRIPTIONS = [
   "A silky smooth hijab in classic black — lightweight, breathable, and versatile enough for both casual days and formal occasions.",
   "A soft chiffon hijab in warm ivory, offering effortless drape and a delicate, feminine look perfect for special events.",
@@ -20,28 +50,7 @@ const HIJAB_DESCRIPTIONS = [
   "A soft coral hijab in premium jersey fabric — stretchy, secure, and comfortable for long days while keeping your style vibrant.",
 ];
 
-const HIJAB_PRICES = [
-  { price: 850,  originalPrice: 1200 }, { price: 950,  originalPrice: 1300 },
-  { price: 700,  originalPrice: 1000 }, { price: 1100, originalPrice: 1400 },
-  { price: 800,  originalPrice: 1100 }, { price: 1200, originalPrice: 1500 },
-  { price: 650,  originalPrice: 900  }, { price: 900,  originalPrice: 1200 },
-  { price: 750,  originalPrice: 1050 }, { price: 1000, originalPrice: 1300 },
-  { price: 850,  originalPrice: 1150 }, { price: 950,  originalPrice: 1250 },
-  { price: 700,  originalPrice: 950  }, { price: 1100, originalPrice: 1400 },
-  { price: 800,  originalPrice: 1100 }, { price: 1300, originalPrice: 1600 },
-];
-
-const HIJAB_NAMES = [
-  'Instant', 'Instant', 'Plisket', 'Crinkle', 'Chiffon', 'Chiffon', 'Chiffon', 'Chador',
-  'Pleated', 'Satin', 'Pashmina', 'Pashmina', 'Colored', 'Shimmer', 'Chiffon', 'Jersey',
-];
-
-const HIJAB_IMAGES = [
-  '/public/Pictures/hijab1.png', '/public/Pictures/hijab2.png', '/public/Pictures/hijab3.png', '/public/Pictures/hijab15.png',
-  '/public/Pictures/hijab5.png', '/public/Pictures/hijab6.png', '/public/Pictures/hijab7.png', '/public/Pictures/hijab8.png',
-  '/public/Pictures/hijab9.png', '/public/Pictures/hijab10.png', '/public/Pictures/hijab11.png', '/public/Pictures/hijab12.png',
-  '/public/Pictures/hijab13.png', '/public/Pictures/hijab14.png', '/public/Pictures/hijab16.png', '/public/Pictures/hijab17.png',
-];
+// ────────────────────────────────────────────────────────────────────────────
 
 const HijabsDetails = () => {
   const { id } = useParams();
@@ -53,7 +62,7 @@ const HijabsDetails = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [id]); 
+  }, [id]);
 
   const hijabs = Array.from({ length: 16 }, (_, i) => ({
     id: i + 1,
@@ -99,7 +108,10 @@ const HijabsDetails = () => {
 
   if (!product) {
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '60vh', fontFamily: 'serif' }}>
+      <div style={{
+        display: 'flex', flexDirection: 'column', alignItems: 'center',
+        justifyContent: 'center', height: '60vh', fontFamily: 'serif'
+      }}>
         <p>Product not found.</p>
         <button onClick={() => navigate('/hijabs')}>Back to Hijabs</button>
       </div>
@@ -111,6 +123,7 @@ const HijabsDetails = () => {
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#fafafa', fontFamily: 'Georgia, serif' }}>
 
+      {/* Breadcrumb */}
       <div style={{
         padding: '16px 6%', borderBottom: '1px solid #eee',
         backgroundColor: '#fff', display: 'flex', gap: '8px', fontSize: '0.85rem'
@@ -122,11 +135,13 @@ const HijabsDetails = () => {
         <span style={{ color: '#111', fontWeight: '600' }}>{product.name}</span>
       </div>
 
+      {/* Main content */}
       <div style={{
         display: 'flex', gap: '48px', padding: '48px 6%',
         maxWidth: '1200px', margin: '0 auto', flexWrap: 'wrap'
       }}>
 
+        {/* Image */}
         <div style={{ flex: '1', minWidth: '300px', maxWidth: '500px' }}>
           <div style={{
             position: 'relative', backgroundColor: '#f0ede8', borderRadius: '16px',
@@ -161,6 +176,7 @@ const HijabsDetails = () => {
           </div>
         </div>
 
+        {/* Info */}
         <div style={{ flex: '1', minWidth: '300px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
 
           <div>
@@ -202,6 +218,7 @@ const HijabsDetails = () => {
 
           <div style={{ height: '1px', backgroundColor: '#eee' }} />
 
+          {/* Size selector */}
           <div>
             <p style={{ fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', marginBottom: '12px' }}>
               Select Size {selectedSize && <span style={{ color: '#2563eb' }}>— {selectedSize}</span>}
@@ -225,6 +242,7 @@ const HijabsDetails = () => {
             </div>
           </div>
 
+          {/* Actions */}
           <div style={{ display: 'flex', gap: '15px', marginTop: '10px' }}>
             <button
               onClick={handleAddToCart}

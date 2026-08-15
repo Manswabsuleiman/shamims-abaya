@@ -4,22 +4,57 @@ import FooterWithBanner from '../components/Footer';
 import WhatsAppFloatingButton from '../components/Float';
 
 const ABAYA_PRICES = [
-  { price: 2800, originalPrice: 3500 }, { price: 3300, originalPrice: 4300 },
-  { price: 2500, originalPrice: 3700 }, { price: 2700, originalPrice: 3000 },
-  { price: 2500, originalPrice: 2999 }, { price: 4000, originalPrice: 4300 },
-  { price: 2300, originalPrice: 2700 }, { price: 3100, originalPrice: 2700 },
-  { price: 2200, originalPrice: 1900 }, { price: 1700, originalPrice: 2000 },
-  { price: 3000, originalPrice: 3500 }, { price: 2800, originalPrice: 3300 },
-  { price: 1700, originalPrice: 2300 }, { price: 2700, originalPrice: 2300 },
-  { price: 3300, originalPrice: 4300 }, { price: 3100, originalPrice: 2800 },
-  { price: 2200, originalPrice: 2600 }, { price: 2200, originalPrice: 2700 },
-  { price: 2500, originalPrice: 2800 }, { price: 2500, originalPrice: 2850 },
-  { price: 3800, originalPrice: 4300 }, { price: 2300, originalPrice: 2700 },
-  { price: 2800, originalPrice: 3300 }, { price: 3000, originalPrice: 3600 },
+  { price: 1200, originalPrice: 1400 }, { price: 1500, originalPrice: 1800 },
+  { price: 1000, originalPrice: 1500 }, { price: 1000, originalPrice: 1500 },
+  { price: 1500, originalPrice: 2200 }, { price: 1500, originalPrice: 2200 },
+  { price: 1500, originalPrice: 1700 }, { price: 1500, originalPrice: 1700 },
+  { price: 2200, originalPrice: 1900 }, { price: 2200, originalPrice: 1900 },
+  { price: 1500, originalPrice: 1900 }, { price: 1500, originalPrice: 1900 },
+  { price: 1000, originalPrice: 1200 }, { price: 1000, originalPrice: 1200 },
+  { price: 1500, originalPrice: 1800 }, { price: 1500, originalPrice: 1800 },
+  { price: 2200, originalPrice: 2600 }, { price: 2200, originalPrice: 2600 },
+  { price: 1700, originalPrice: 2000 }, { price: 1700, originalPrice: 2000 },
+  { price: 1000, originalPrice: 1300 }, { price: 1000, originalPrice: 1300 },
+  { price: 1300, originalPrice: 1600 }, { price: 1300, originalPrice: 1600 },
 ];
 
-const ABAYA_IMAGES = Array.from({ length: 23 }, (_, i) => `public/Pictures/Abbaya${i + 1}.png`);
-ABAYA_IMAGES.push(`public/Pictures/i24.png`);
+// Images must live in public/Pictures/ — files served from "public" are
+// referenced WITHOUT the "public" segment in the URL, so paths start with "/Pictures/...".
+const ABAYA_IMAGES = [
+  '/Pictures/d23.png',
+  '/Pictures/d2.png',
+  '/Pictures/d3.png',
+  '/Pictures/d4.png',
+  '/Pictures/d5.png',
+  '/Pictures/d6.png',
+  '/Pictures/d7.png',
+  '/Pictures/d8.png',
+  '/Pictures/d9.png',
+  '/Pictures/d10.png',
+  '/Pictures/d11.png',
+  '/Pictures/d12.png',
+  '/Pictures/dress13.png',
+  '/Pictures/dress14.png',
+  '/Pictures/crop.png',
+  '/Pictures/Tops.png',
+  '/Pictures/Tops2.png',
+  '/Pictures/d15.png',
+  '/Pictures/d16.png',
+  '/Pictures/d1.png',
+  '/Pictures/d17.png',
+  '/Pictures/d18.png',
+  '/Pictures/d19.png',
+  '/Pictures/d20.png',
+];
+
+// Custom display names, keyed by product id (1-based, matches "Dress N" default).
+// Anything not listed here falls back to `Dress ${id}`.
+const ABAYA_NAME_OVERRIDES = {
+  15: 'Girlie Tops',
+  16: 'Girlie Tops',
+  17: 'Girlie Tops',
+  23: 'Animal Print',
+};
 
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap');
@@ -257,20 +292,23 @@ const Abaya = () => {
   }, []);
 
   const slides = [
-    { tag: "Big Fashion Sale", title: "Limited Time Offer!", discount: "Up to 50% OFF!", subtext: "Redefine Your Everyday Style", image: "public/Pictures/canva.png" },
-    { tag: "New Arrivals", title: "Elegant Abaya Collection", discount: "Shop the Latest Trends", subtext: "Modern designs for every occasion", image: "public/Pictures/canva2.png" },
-    { tag: "Summer Essentials", title: "Fresh New Looks", discount: "Flat 20% Discount", subtext: "Comfort meets style this season", image: "public/Pictures/canva3.png" }
+    { tag: "Big Fashion Sale", title: "Limited Time Offer!", discount: "Up to 50% OFF!", subtext: "Redefine Your Everyday Style", image: "/Pictures/banA.png" },
+    { tag: "New Arrivals", title: "Elegant Fashion Wear", discount: "Shop the Latest Trends", subtext: "Modern designs for every occasion", image: "/Pictures/banB.png" },
+    { tag: "Summer Essentials", title: "Fresh New Looks", discount: "Flat 20% Discount", subtext: "Comfort meets style this season", image: "/Pictures/banC.png" }
   ];
 
-  const abayas = Array.from({ length: 24 }, (_, i) => ({
-    id: i + 1,
-    image: ABAYA_IMAGES[i],
-    name: `Abaya Style ${i + 1}`,
-    price: ABAYA_PRICES[i].price,
-    originalPrice: ABAYA_PRICES[i].originalPrice,
-    liked: false,
-    soldOut: i >= 4 && i <= 15,
-  }));
+  const abayas = Array.from({ length: 24 }, (_, i) => {
+    const id = i + 1;
+    return {
+      id,
+      image: ABAYA_IMAGES[i],
+      name: ABAYA_NAME_OVERRIDES[id] || `Dress ${id}`,
+      price: ABAYA_PRICES[i].price,
+      originalPrice: ABAYA_PRICES[i].originalPrice,
+      liked: false,
+      soldOut: i >= 4 && i <= 15,
+    };
+  });
 
   const [current, setCurrent] = useState(0);
   const [products, setProducts] = useState(abayas);

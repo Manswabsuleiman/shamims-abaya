@@ -3,25 +3,25 @@ import { useNavigate } from 'react-router-dom';
 import FooterWithBanner from '../components/Footer';
 
 const HIJAB_PRICES = [
-  { price: 850,  originalPrice: 1200 }, { price: 950,  originalPrice: 1300 },
-  { price: 700,  originalPrice: 1000 }, { price: 1100, originalPrice: 1400 },
-  { price: 800,  originalPrice: 1100 }, { price: 1200, originalPrice: 1500 },
-  { price: 650,  originalPrice: 900  }, { price: 900,  originalPrice: 1200 },
+  { price: 500,  originalPrice: 650 }, { price: 500,  originalPrice: 600 },
+  { price: 500,  originalPrice: 650 }, { price: 550, originalPrice: 650 },
+  { price: 550,  originalPrice: 650 }, { price: 500, originalPrice: 650 },
+  { price: 650,  originalPrice: 900  }, { price: 600,  originalPrice: 750 },
   { price: 750,  originalPrice: 1050 }, { price: 1000, originalPrice: 1300 },
   { price: 850,  originalPrice: 1150 }, { price: 950,  originalPrice: 1250 },
-  { price: 700,  originalPrice: 950  }, { price: 1100, originalPrice: 1400 },
+  { price: 700,  originalPrice: 950  }, { price: 600, originalPrice: 750 },
   { price: 800,  originalPrice: 1100 }, { price: 1300, originalPrice: 1600 },
 ];
 
 const HIJAB_IMAGES = [
-  'public/Pictures/hijab1.png',  'public/Pictures/hijab2.png',
-  'public/Pictures/hijab3.png',  'public/Pictures/hijab15.png',
-  'public/Pictures/hijab5.png',  'public/Pictures/hijab6.png',
-  'public/Pictures/hijab7.png',  'public/Pictures/hijab8.png',
-  'public/Pictures/hijab9.png',  'public/Pictures/hijab10.png',
-  'public/Pictures/hijab11.png', 'public/Pictures/hijab12.png',
-  'public/Pictures/hijab13.png', 'public/Pictures/hijab14.png',
-  'public/Pictures/hijab16.png', 'public/Pictures/hijab17.png',
+  '/Pictures/pic1.png',  '/Pictures/pic4.png',
+  '/Pictures/pic5.png',  '/Pictures/hijab15.png',
+  '/Pictures/pic6.png',  '/Pictures/pic3.png',
+  '/Pictures/pic7.png',  '/Pictures/pic2.png',
+  '/Pictures/hijab9.png',  '/Pictures/hijab10.png',
+  '/Pictures/hijab11.png', '/Pictures/hijab12.png',
+  '/Pictures/hijab13.png', '/Pictures/pic2.png',
+  '/Pictures/hijab16.png', '/Pictures/hijab17.png',
 ];
 
 const HIJAB_NAMES = [
@@ -115,7 +115,6 @@ const styles = `
     transition: opacity 0.4s ease;
   }
 
-  /* ── FLASH SALE HEADER ───────────────────────────────────────────── */
   .flash-header {
     display: flex;
     align-items: center;
@@ -157,7 +156,6 @@ const styles = `
     text-align: center;
   }
 
-  /* ── PRODUCT GRID ────────────────────────────────────────────────── */
   .product-section {
     padding: 0 5% 50px;
     background: #faf9f7;
@@ -343,9 +341,9 @@ const Hijabs = () => {
   }));
 
   const slides = [
-    { tag: 'New Arrivals', title: 'Hijab Collection', discount: 'Up to 50% OFF!', subtext: 'Elegant styles for every occasion', image: 'public/Pictures/ban2.png' },
-    { tag: 'Trending Now', title: 'Premium Hijabs', discount: 'Fresh Styles Just In', subtext: 'Soft fabrics, stunning colours', image: 'public/Pictures/ban1.png' },
-    { tag: 'Summer Collection', title: 'Light & Breathable', discount: 'Flat 20% Discount', subtext: 'Stay modest, stay cool', image: 'public/Pictures/ban3.png' },
+    { tag: 'New Arrivals', title: 'Hijab Collection', discount: 'Up to 50% OFF!', subtext: 'Elegant styles for every occasion', image: '/Pictures/ban2.png' },
+    { tag: 'Trending Now', title: 'Premium Hijabs', discount: 'Fresh Styles Just In', subtext: 'Soft fabrics, stunning colours', image: '/Pictures/ban1.png' },
+    { tag: 'Summer Collection', title: 'Light & Breathable', discount: 'Flat 20% Discount', subtext: 'Stay modest, stay cool', image: '/Pictures/ban3.png' },
   ];
 
   const [current, setCurrent]   = useState(0);

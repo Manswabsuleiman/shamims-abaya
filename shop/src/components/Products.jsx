@@ -21,9 +21,9 @@ const Products = () => {
   const productData = [
     {
       id:        1,
-      src:       'Public/Pictures/blue2.png',
+      src:       'Public/Pictures/banA.png',
       link:      '/abaya',
-      label:     'Abaya',
+      label:     'Fashion',
       animation: 'slideInLeft',
     },
     {

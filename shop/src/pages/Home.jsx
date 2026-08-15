@@ -6,6 +6,7 @@ import Collection from '../components/Collection'
 import FooterWithBanner from '../components/Footer'
 import WhatsAppFloatingButton from '../components/Float'
 import DeliveryCard from '../components/Delivery'
+import VideoSection from '../components/Video'
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
         <Navbar/>
         <LandingPage/>
         <Products/>
+        <VideoSection/>
         <Collection/>
         <DeliveryCard/>
         <FooterWithBanner/>

@@ -222,7 +222,7 @@ const About = () => {
               lineHeight: '1.85',
               margin:     0,
             }}>
-              We are a small, independent abaya shop — not a warehouse, not a faceless brand.
+              We are a small, independent shop — not a warehouse, not a faceless brand.
               Every order is handled personally with full attention to quality and care.
             </p>
           </div>
@@ -256,7 +256,7 @@ const About = () => {
               lineHeight: '1.85',
               margin:     0,
             }}>
-              Every abaya is carefully folded, wrapped with tissue, and sealed with intention —
+              Every product is carefully folded, wrapped with a branded box bag, and sealed with intention —
               whether it is a gift or a treat for yourself. The unboxing is part of the joy.
             </p>
           </div>
@@ -274,7 +274,7 @@ const About = () => {
             }}
           >
             <div style={{ fontSize: '26px', marginBottom: '16px' }}>🚚</div>
-            <h3 style={{
+                       <h3 style={{
               fontSize:      '11px',
               fontWeight:    '400',
               letterSpacing: '3px',
@@ -282,7 +282,7 @@ const About = () => {
               textTransform: 'uppercase',
               marginBottom:  '12px',
             }}>
-              Free Delivery Offer
+              Delivery Inquiries
             </h3>
             <p style={{
               fontSize:   '14px',
@@ -290,9 +290,8 @@ const About = () => {
               lineHeight: '1.85',
               margin:     0,
             }}>
-              Purchase any <strong style={{ color: gold }}>two abayas</strong> in one order and enjoy{' '}
-              <strong style={{ color: gold }}>free delivery</strong> — automatically at checkout.
-              No codes, no conditions. Just our way of saying thank you.
+              Purchase any <strong style={{ color: gold }}>dress</strong> in one order and enjoy{' '}
+              Just our way of saying thank you.
             </p>
           </div>
 
@@ -327,7 +326,7 @@ const About = () => {
           margin:     '0 0 14px',
           fontStyle:  'italic',
         }}>
-          Buy 2 Abayas, Delivery is on Us.
+          Buy Dresses, Delivery is on time.
         </h2>
 
         <div style={{ width: '32px', height: '1px', backgroundColor: 'rgba(10,22,40,0.3)', margin: '0 auto 16px' }} />
@@ -339,8 +338,8 @@ const About = () => {
           margin:     '0 auto',
           lineHeight: '1.8',
         }}>
-          Add any two pieces to your cart and the delivery fee disappears automatically.
-          No vouchers, no fuss — just our gift to you.
+          Add any two pieces to your cart and the fee displays on your screen.
+           — just our gift to you.
         </p>
       </section>
 

@@ -35,7 +35,7 @@ const Cart = () => {
   };
 
   const subtotal = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
-  const shipping = items.length > 0 ? 150 : 0;
+  const shipping = items.length > 0 ? 300 : 0;
 
   return (
     <div className="cart-root">
