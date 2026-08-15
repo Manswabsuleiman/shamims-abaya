@@ -8,15 +8,15 @@ const Collection = () => {
 
   const items = [
 
-    { src: "public/Pictures/d11.png", alt: "Fashion", path: "/fashion", label: "Dress" },
-    { src: "public/Pictures/hijabi.png", alt: "Hijab Collection", path: "/hijabs", label: "Hijab" },
-    { src: "public/Pictures/d23.png", alt: "Fashion", path: "/fashion", label: "Dress" },
-    { src: "public/Pictures/h2.png", alt: "Hijab", path: "/hijabs", label: "Hijab" },
-
-    { src: "/Pictures/Abbaya2.png", alt: "Abbaya 2", path: "/abaya", label: "Abaya" },
+    { src: "/Pictures/d11.png", alt: "Fashion", path: "/fashion", label: "Dress" },
     { src: "/Pictures/hijabi.png", alt: "Hijab Collection", path: "/hijabs", label: "Hijab" },
-    { src: "/Pictures/Abbaya1.png", alt: "Abbaya 1", path: "/abaya", label: "Abaya" },
-    { src: "/Pictures/h2.png", alt: "Hijab 2", path: "/hijabs", label: "Hijab" },
+    { src: "/Pictures/d23.png", alt: "Fashion", path: "/fashion", label: "Dress" },
+    { src: "/Pictures/h2.png", alt: "Hijab", path: "/hijabs", label: "Hijab" },
+
+    { src: "/Pictures/d10.png", alt: "Trendy Fashion", path: "/abaya", label: "Dresses" },
+    { src: "/Pictures/hijabi.png", alt: "Hijab Collection", path: "/hijabs", label: "Hijab" },
+    { src: "/Pictures/d24.png", alt: "Trendy Fashion", path: "/abaya", label: "Modest" },
+    { src: "/Pictures/h2.png", alt: "Hijab", path: "/hijabs", label: "Hijab" },
   ];
 
   const containerVariants = {
