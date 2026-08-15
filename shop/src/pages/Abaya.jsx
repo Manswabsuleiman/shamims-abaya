@@ -292,9 +292,9 @@ const Abaya = () => {
   }, []);
 
   const slides = [
-    { tag: "Big Fashion Sale", title: "Limited Time Offer!", discount: "Up to 50% OFF!", subtext: "Redefine Your Everyday Style", image: "/Pictures/banA.png" },
-    { tag: "New Arrivals", title: "Elegant Fashion Wear", discount: "Shop the Latest Trends", subtext: "Modern designs for every occasion", image: "/Pictures/banB.png" },
-    { tag: "Summer Essentials", title: "Fresh New Looks", discount: "Flat 20% Discount", subtext: "Comfort meets style this season", image: "/Pictures/banC.png" }
+    { tag: "Big Fashion Sale", title: "Limited Time Offer!", discount: "Up to 50% OFF!", subtext: "Redefine Your Everyday Style", image: "/Pictures/canva.png" },
+    { tag: "New Arrivals", title: "Elegant Abaya Collection", discount: "Shop the Latest Trends", subtext: "Modern designs for every occasion", image: "/Pictures/canva2.png" },
+    { tag: "Summer Essentials", title: "Fresh New Looks", discount: "Flat 20% Discount", subtext: "Comfort meets style this season", image: "/Pictures/canva3.png" }
   ];
 
   const abayas = Array.from({ length: 24 }, (_, i) => {

@@ -229,7 +229,7 @@ const Delivery = () => {
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeLeft}
           >
-            <img src="public/Pictures/heading.png" alt="Be Beautiful Collection" />
+            <img src="/Pictures/heading.png" alt="Be Beautiful Collection" />
             <div className="delivery-image-overlay">
               <motion.span
                 className="delivery-image-tag"

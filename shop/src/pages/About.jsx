@@ -75,7 +75,7 @@ const About = () => {
       }}>
 
         <img
-          src="public/Pictures/turkiye.png"
+          src="/Pictures/turkiye.png"
           alt="Shamims Abaya"
           style={{
             width:          '100%',

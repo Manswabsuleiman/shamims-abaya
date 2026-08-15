@@ -26,6 +26,8 @@ const HIJAB_PRICES = [
 
 const HIJAB_NAMES = [
   'Chiffon', 'Plisket', 'Plisket', 'Crinkle',
+
+  'Instant', 'Instant', 'Plisket', 'Crinkle',
   'Chiffon', 'Chiffon', 'Chiffon', 'Chador',
   'Pleated', 'Satin',   'Pashmina','Pashmina',
   'Colored', 'Shimmer', 'Chiffon', 'Jersey',

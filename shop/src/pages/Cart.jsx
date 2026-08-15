@@ -57,7 +57,7 @@ const Cart = () => {
           width: 100%;
           height: clamp(220px, 40vw, 430px);
           background: linear-gradient(rgba(0,0,0,0.42), rgba(0,0,0,0.42)),
-                      url('public/Pictures/cart.png') center top / cover no-repeat;
+                      url('/Pictures/cart.png') center top / cover no-repeat;
           display: flex;
           flex-direction: column;
           justify-content: center;
