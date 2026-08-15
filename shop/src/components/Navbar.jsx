@@ -204,7 +204,7 @@ const Navbar = () => {
 
         <a href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
           <img
-            src="public/Pictures/sham.png"
+            src="/Pictures/sham.png"
 
             src="/Pictures/ss.png"
             alt="Logo"
